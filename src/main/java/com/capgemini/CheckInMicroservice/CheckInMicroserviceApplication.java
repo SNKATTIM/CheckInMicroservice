@@ -2,6 +2,9 @@ package com.capgemini.CheckInMicroservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class CheckInMicroserviceApplication {
@@ -9,5 +12,13 @@ public class CheckInMicroserviceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CheckInMicroserviceApplication.class, args);
 	}
+	
+	@Bean
+	@LoadBalanced
+	public RestTemplate restTemplate()
+	{
+		 return new RestTemplate();
+	}
 
 }
+
